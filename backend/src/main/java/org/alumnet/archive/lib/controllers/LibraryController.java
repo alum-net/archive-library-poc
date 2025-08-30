@@ -1,4 +1,4 @@
-package controllers;
+package org.alumnet.archive.lib.controllers;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.io.ByteArrayResource;
@@ -6,14 +6,15 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import services.interfaces.IStorageService;
+import org.alumnet.archive.lib.services.interfaces.IStorageService;
 
 import java.io.IOException;
 
-@RestController
-@RequestMapping("/api/library")
+@Controller
+@RequestMapping("/library")
 public class LibraryController {
 
     private final IStorageService storageService;
@@ -51,8 +52,8 @@ public class LibraryController {
      * @param fileName El nombre del archivo en S3.
      * @return ResponseEntity con el archivo como un recurso de bytes.
      */
-    @GetMapping("/download/{fileName}")
-    public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable String fileName) {
+    @GetMapping("/download")
+    public ResponseEntity<ByteArrayResource> downloadFile(@RequestParam String fileName) {
         try {
             byte[] data = storageService.downloadFile(fileName);
             ByteArrayResource resource = new ByteArrayResource(data);

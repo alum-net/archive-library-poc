@@ -1,4 +1,4 @@
-package services.interfaces;
+package org.alumnet.archive.lib.services.interfaces;
 
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,10 +1,10 @@
-package services;
+package org.alumnet.archive.lib.services;
 
 import org.springframework.stereotype.Service;
 import io.awspring.cloud.s3.S3Template;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.multipart.MultipartFile;
-import services.interfaces.IStorageService;
+import org.alumnet.archive.lib.services.interfaces.IStorageService;
 
 import java.io.IOException;
 

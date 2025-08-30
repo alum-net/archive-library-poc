@@ -1,5 +1,5 @@
 # Archivos de entorno y secretos
-secrets.properties
+.env
 
 HELP.md
 .gradle
