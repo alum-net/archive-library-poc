@@ -1,5 +1,6 @@
 package org.alumnet.archive.lib.services;
 
+import lombok.Builder;
 import org.springframework.stereotype.Service;
 import io.awspring.cloud.s3.S3Template;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,7 @@ import org.alumnet.archive.lib.services.interfaces.IStorageService;
 
 import java.io.IOException;
 
+@Builder
 @Service("awsStorageService")
 public class AWSStorageService implements IStorageService {
 
@@ -15,10 +17,6 @@ public class AWSStorageService implements IStorageService {
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
-
-    public AWSStorageService(S3Template s3Template) {
-        this.s3Template = s3Template;
-    }
 
     @Override
     public String uploadFile(MultipartFile file, String key) {
